@@ -102,7 +102,7 @@ export default function AdminLoginPage() {
         </form>
 
         <p className="mt-6 text-center text-xs text-ansor-400">
-          Akun admin dibuat lewat Supabase Auth (Dashboard &gt; Authentication).
+          Hubungi Admin PW GP Ansor Jawa Barat Untuk Informasi Lebih Lanjut
         </p>
       </div>
     </div>

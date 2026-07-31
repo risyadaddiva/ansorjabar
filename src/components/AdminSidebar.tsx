@@ -3,14 +3,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Newspaper, PenLine, ExternalLink } from "lucide-react";
+import { LayoutDashboard, Newspaper, PenLine, ImageIcon, ExternalLink } from "lucide-react";
 import { LogoutButton } from "./LogoutButton";
 import { ThemeToggle } from "./ThemeToggle";
 
 const items = [
   { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/admin/berita", label: "Berita", icon: Newspaper },
-  { href: "/admin/artikel", label: "Artikel", icon: PenLine },
+  { href: "/admin/berita",    label: "Berita",    icon: Newspaper },
+  { href: "/admin/artikel",   label: "Artikel",   icon: PenLine },
+  { href: "/admin/galeri",    label: "Galeri",    icon: ImageIcon },
 ];
 
 export function AdminSidebar() {
