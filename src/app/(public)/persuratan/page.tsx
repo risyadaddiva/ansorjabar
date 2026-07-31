@@ -158,10 +158,7 @@ export default function PersuratanPage() {
                 </span>
                 <a
                   href={doc.linkDownload}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    alert(`Mengunduh file: ${doc.judul}`);
-                  }}
+                  download
                   className="inline-flex items-center gap-2 rounded-xl bg-ansor-700 px-4 py-2 text-xs font-bold text-white transition-all hover:bg-ansor-600 hover:shadow-md dark:bg-gold-500 dark:text-ansor-950 dark:hover:bg-gold-400"
                 >
                   <Download size={14} />
