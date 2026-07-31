@@ -34,6 +34,7 @@ export function Footer() {
             <li><Link href="/struktur-organisasi" className="hover:text-gold-400">Struktur Organisasi</Link></li>
             <li><Link href="/berita" className="hover:text-gold-400">Berita</Link></li>
             <li><Link href="/artikel" className="hover:text-gold-400">Artikel</Link></li>
+            <li><Link href="/persuratan" className="hover:text-gold-400">Persuratan</Link></li>
           </ul>
         </div>
 

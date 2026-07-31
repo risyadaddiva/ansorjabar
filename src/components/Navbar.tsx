@@ -7,7 +7,7 @@ import {
   Menu, X, ChevronDown, LogIn, 
   Home, User, Landmark, Newspaper, 
   FileText, Image as ImageIcon, PhoneCall, 
-  Compass, Network, Building2 
+  Compass, Network, Building2, FileSpreadsheet 
 } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -20,13 +20,14 @@ const profilSubmenu = [
 
 // ── Menu utama ────────────────────────────────────────────────────────────────
 const menu = [
-  { href: "/",               label: "Beranda",        icon: Home,       dropdown: null },
-  { href: "/profil",         label: "Profil",         icon: User,       dropdown: profilSubmenu },
-  { href: "/badan-lembaga",  label: "Badan & Lembaga",icon: Landmark,   dropdown: null },
-  { href: "/berita",         label: "Berita",         icon: Newspaper,  dropdown: null },
-  { href: "/artikel",        label: "Artikel",        icon: FileText,   dropdown: null },
-  { href: "/galeri",         label: "Galeri",         icon: ImageIcon,  dropdown: null },
-  { href: "/kontak",         label: "Kontak",         icon: PhoneCall,  dropdown: null },
+  { href: "/",               label: "Beranda",        icon: Home,            dropdown: null },
+  { href: "/profil",         label: "Profil",         icon: User,            dropdown: profilSubmenu },
+  { href: "/badan-lembaga",  label: "Badan & Lembaga",icon: Landmark,        dropdown: null },
+  { href: "/berita",         label: "Berita",         icon: Newspaper,       dropdown: null },
+  { href: "/artikel",        label: "Artikel",        icon: FileText,        dropdown: null },
+  { href: "/galeri",         label: "Galeri",         icon: ImageIcon,       dropdown: null },
+  { href: "/persuratan",     label: "Persuratan",     icon: FileSpreadsheet, dropdown: null },
+  { href: "/kontak",         label: "Kontak",         icon: PhoneCall,       dropdown: null },
 ];
 
 export function Navbar() {
@@ -47,16 +48,16 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-ansor-100 bg-white/95 backdrop-blur dark:border-ansor-800 dark:bg-ansor-950/95">
+    <header className="sticky top-0 z-40 border-b border-ansor-100 bg-white/95 backdrop-blur dark:border-ansor-800 dark:bg-ansor-950/95 transition-all duration-300">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3 transition-transform duration-300 hover:scale-105">
           <Image
             src="/GP Ansor.svg"
             alt="GP Ansor Logo"
             width={44}
             height={44}
-            className="h-11 w-auto object-contain"
+            className="h-11 w-auto object-contain drop-shadow"
             priority
           />
           <span className="leading-tight">
@@ -80,9 +81,9 @@ export function Navbar() {
                   id="nav-profil-btn"
                   type="button"
                   onClick={() => setProfilOpen((v) => !v)}
-                  className="flex items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-ansor-700 transition-colors hover:bg-ansor-50 hover:text-ansor-900 dark:text-ansor-200 dark:hover:bg-ansor-900 dark:hover:text-gold-400"
+                  className="group flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-ansor-700 transition-all duration-200 hover:bg-ansor-50 hover:text-ansor-900 dark:text-ansor-200 dark:hover:bg-ansor-900 dark:hover:text-gold-400"
                 >
-                  <Icon size={16} className="text-ansor-600 dark:text-ansor-400" />
+                  <Icon size={16} className="text-ansor-600 dark:text-ansor-400 transition-transform duration-200 group-hover:scale-110" />
                   <span>{item.label}</span>
                   <ChevronDown
                     size={14}
@@ -93,7 +94,7 @@ export function Navbar() {
                 {profilOpen && (
                   <div
                     id="nav-profil-dropdown"
-                    className="absolute left-0 top-full mt-1 min-w-[210px] rounded-xl border border-ansor-100 bg-white py-1.5 shadow-xl dark:border-ansor-800 dark:bg-ansor-900"
+                    className="absolute left-0 top-full mt-1.5 min-w-[210px] rounded-xl border border-ansor-100 bg-white/95 p-1.5 shadow-2xl backdrop-blur-md dark:border-ansor-800 dark:bg-ansor-900/95 animate-in fade-in slide-in-from-top-2 duration-200"
                   >
                     {item.dropdown.map((sub) => {
                       const SubIcon = sub.icon;
@@ -102,9 +103,9 @@ export function Navbar() {
                           key={sub.href}
                           href={sub.href}
                           onClick={() => setProfilOpen(false)}
-                          className="flex items-center gap-2.5 px-4 py-2.5 text-sm font-medium text-ansor-700 transition-colors hover:bg-ansor-50 hover:text-ansor-900 dark:text-ansor-200 dark:hover:bg-ansor-800 dark:hover:text-gold-400"
+                          className="group flex items-center gap-2.5 rounded-lg px-3.5 py-2.5 text-sm font-medium text-ansor-700 transition-all duration-150 hover:bg-ansor-50 hover:text-ansor-900 dark:text-ansor-200 dark:hover:bg-ansor-800 dark:hover:text-gold-400"
                         >
-                          <SubIcon size={15} className="text-ansor-500 dark:text-ansor-400" />
+                          <SubIcon size={15} className="text-ansor-500 dark:text-ansor-400 transition-transform duration-150 group-hover:scale-110" />
                           <span>{sub.label}</span>
                         </Link>
                       );
@@ -117,9 +118,9 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="flex items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-ansor-700 transition-colors hover:bg-ansor-50 hover:text-ansor-900 dark:text-ansor-200 dark:hover:bg-ansor-900 dark:hover:text-gold-400"
+                className="group flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-ansor-700 transition-all duration-200 hover:bg-ansor-50 hover:text-ansor-900 dark:text-ansor-200 dark:hover:bg-ansor-900 dark:hover:text-gold-400"
               >
-                <Icon size={16} className="text-ansor-600 dark:text-ansor-400" />
+                <Icon size={16} className="text-ansor-600 dark:text-ansor-400 transition-transform duration-200 group-hover:scale-110" />
                 <span>{item.label}</span>
               </Link>
             );
@@ -135,7 +136,7 @@ export function Navbar() {
             href="/admin/dashboard"
             id="nav-admin-login"
             title="Masuk Admin"
-            className="rounded-md border border-ansor-200 p-2 text-ansor-600 transition-colors hover:border-ansor-400 hover:bg-ansor-50 hover:text-ansor-900 dark:border-ansor-700 dark:text-ansor-300 dark:hover:border-ansor-500 dark:hover:bg-ansor-900 dark:hover:text-gold-400"
+            className="rounded-lg border border-ansor-200 p-2 text-ansor-600 transition-all duration-200 hover:border-ansor-400 hover:bg-ansor-50 hover:text-ansor-900 hover:scale-105 dark:border-ansor-700 dark:text-ansor-300 dark:hover:border-ansor-500 dark:hover:bg-ansor-900 dark:hover:text-gold-400"
           >
             <LogIn size={18} />
           </Link>
@@ -144,7 +145,7 @@ export function Navbar() {
           <button
             type="button"
             id="nav-mobile-menu-btn"
-            className="rounded-md border border-ansor-200 p-2 dark:border-ansor-700 lg:hidden"
+            className="rounded-lg border border-ansor-200 p-2 text-ansor-700 transition-transform duration-200 active:scale-95 dark:border-ansor-700 dark:text-ansor-200 lg:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-label="Buka menu"
           >
@@ -155,7 +156,7 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <nav className="border-t border-ansor-100 bg-white px-4 py-3 dark:border-ansor-800 dark:bg-ansor-950 lg:hidden">
+        <nav className="border-t border-ansor-100 bg-white/95 px-4 py-3 backdrop-blur-md dark:border-ansor-800 dark:bg-ansor-950/95 lg:hidden animate-in fade-in slide-in-from-top-1 duration-200">
           <div className="space-y-1">
             {menu.map((item) => {
               const Icon = item.icon;
@@ -164,7 +165,7 @@ export function Navbar() {
                   <button
                     type="button"
                     onClick={() => setMobileProfilOpen((v) => !v)}
-                    className="flex w-full items-center justify-between rounded-md px-3 py-2.5 text-sm font-medium text-ansor-700 hover:bg-ansor-50 dark:text-ansor-200 dark:hover:bg-ansor-900"
+                    className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-ansor-700 hover:bg-ansor-50 dark:text-ansor-200 dark:hover:bg-ansor-900"
                   >
                     <span className="flex items-center gap-2">
                       <Icon size={18} className="text-ansor-600 dark:text-ansor-400" />
@@ -184,7 +185,7 @@ export function Navbar() {
                             key={sub.href}
                             href={sub.href}
                             onClick={() => { setOpen(false); setMobileProfilOpen(false); }}
-                            className="flex items-center gap-2.5 rounded-md px-3 py-2 text-sm text-ansor-600 hover:bg-ansor-50 dark:text-ansor-300 dark:hover:bg-ansor-900"
+                            className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-ansor-600 hover:bg-ansor-50 dark:text-ansor-300 dark:hover:bg-ansor-900"
                           >
                             <SubIcon size={16} className="text-ansor-500 dark:text-ansor-400" />
                             <span>{sub.label}</span>
@@ -199,7 +200,7 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="flex items-center gap-2 rounded-md px-3 py-2.5 text-sm font-medium text-ansor-700 hover:bg-ansor-50 dark:text-ansor-200 dark:hover:bg-ansor-900"
+                  className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-ansor-700 hover:bg-ansor-50 dark:text-ansor-200 dark:hover:bg-ansor-900"
                 >
                   <Icon size={18} className="text-ansor-600 dark:text-ansor-400" />
                   <span>{item.label}</span>
@@ -214,4 +215,3 @@ export function Navbar() {
     </header>
   );
 }
-
