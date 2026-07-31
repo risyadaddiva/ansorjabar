@@ -111,42 +111,39 @@ export default function BadanLembagaPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-ansor-600 via-ansor-700 to-ansor-800 py-16 lg:py-20 text-white shadow-xl">
         {/* Background Orbs Glow & Islamic Texture */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute -left-20 -top-20 h-96 w-96 rounded-full bg-gold-300/25 blur-3xl animate-pulse-glow" />
-          <div className="absolute -right-20 -bottom-20 h-[30rem] w-[30rem] rounded-full bg-emerald-300/25 blur-3xl animate-pulse-glow" style={{ animationDelay: "2.5s" }} />
-          <div className="h-full w-full bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:28px_28px] opacity-15" />
+          <div className="absolute -left-20 -top-20 h-[28rem] w-[28rem] rounded-full bg-gold-300/30 blur-3xl animate-pulse-glow" />
+          <div className="absolute -right-20 -bottom-20 h-[32rem] w-[32rem] rounded-full bg-emerald-300/30 blur-3xl animate-pulse-glow" style={{ animationDelay: "2.5s" }} />
+          <div className="h-full w-full bg-[radial-gradient(#d4af37_1.5px,transparent_1.5px)] [background-size:28px_28px] opacity-20" />
         </div>
 
         <div className="relative mx-auto max-w-6xl px-4 text-center">
           {/* Top Pill Badge */}
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold-300/50 bg-gold-400/20 px-4 py-1.5 text-xs font-bold text-gold-300 backdrop-blur-md shadow-md">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold-300/60 bg-gold-400/20 px-4.5 py-1.5 text-xs font-bold text-gold-300 backdrop-blur-md shadow-md transition-all duration-300 hover:scale-105">
             <span className="flex h-2 w-2 rounded-full bg-gold-300 animate-ping" />
             <Landmark size={14} className="text-gold-300" />
             <span className="tracking-wide">PW GP ANSOR JAWA BARAT</span>
           </div>
 
-          {/* Heading Title */}
+          {/* Solid White Heading Title */}
           <h1 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-white drop-shadow-md">
-            Badan &amp; Lembaga{" "}
-            <span className="bg-gradient-to-r from-gold-300 via-gold-400 to-amber-200 bg-clip-text text-transparent underline decoration-gold-400/50 decoration-wavy">
-              Otonom
-            </span>
+            Badan &amp; Lembaga Otonom
           </h1>
 
           {/* Subtitle Description */}
-          <p className="mx-auto mt-4 max-w-2xl text-base text-ansor-50/90 sm:text-lg leading-relaxed font-medium">
+          <p className="mx-auto mt-4 max-w-2xl text-base text-ansor-50/95 sm:text-lg leading-relaxed font-medium">
             Sayap organisasi dan satuan khusus Gerakan Pemuda Ansor Jawa Barat yang bergerak di bidang keagamaan, pengamanan, kemaritiman, pencegahan narkoba, dan ketertiban lalu lintas.
           </p>
 
           {/* Quick Badges Row (5 Badges) */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             {daftarLembaga.map((l) => {
               const Icon = l.icon;
               return (
                 <div
                   key={l.id}
-                  className="flex items-center gap-1.5 rounded-full border border-white/30 bg-white/15 px-3.5 py-1.5 text-xs font-semibold text-white backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-gold-300 hover:bg-gold-500/25 hover:text-gold-300"
+                  className="group flex items-center gap-2 rounded-full border border-white/40 bg-white/20 px-4 py-2 text-xs font-bold text-white backdrop-blur-md shadow-sm transition-all duration-300 hover:scale-110 hover:border-gold-300 hover:bg-gold-500/30 hover:text-gold-300 hover:shadow-lg cursor-pointer"
                 >
-                  <Icon size={14} className="text-gold-300" />
+                  <Icon size={15} className="text-gold-300 transition-transform duration-300 group-hover:rotate-12" />
                   <span>{l.namaShort}</span>
                 </div>
               );
@@ -156,7 +153,7 @@ export default function BadanLembagaPage() {
       </section>
 
       {/* ── Content Grid Cards ─────────────────────────────────────────────────── */}
-      <section className="mx-auto max-w-6xl px-4 pt-12">
+      <section className="mx-auto max-w-6xl px-4 pt-14">
         <div className="mb-8 flex items-center justify-between border-b border-ansor-200 pb-4 dark:border-ansor-800">
           <div>
             <h2 className="text-xl font-bold text-ansor-900 dark:text-ansor-50">
@@ -166,7 +163,7 @@ export default function BadanLembagaPage() {
               Masing-masing memiliki tugas khusus untuk khidmat kepada masyarakat dan organisasi.
             </p>
           </div>
-          <span className="flex items-center gap-1.5 rounded-lg bg-ansor-100 px-3 py-1 text-xs font-bold text-ansor-800 dark:bg-ansor-900 dark:text-gold-400">
+          <span className="flex items-center gap-1.5 rounded-lg bg-ansor-100 px-3 py-1 text-xs font-bold text-ansor-800 dark:bg-ansor-900 dark:text-gold-400 shadow-sm">
             <Sparkles size={13} className="text-gold-500" />
             5 Lembaga Aktif
           </span>

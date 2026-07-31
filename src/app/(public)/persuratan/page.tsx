@@ -64,44 +64,41 @@ export default function PersuratanPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-ansor-600 via-ansor-700 to-ansor-800 py-16 lg:py-20 text-white shadow-xl">
         {/* Background Orbs Glow & Islamic Texture */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute -left-20 -top-20 h-96 w-96 rounded-full bg-gold-300/25 blur-3xl animate-pulse-glow" />
-          <div className="absolute -right-20 -bottom-20 h-[30rem] w-[30rem] rounded-full bg-emerald-300/25 blur-3xl animate-pulse-glow" style={{ animationDelay: "2.5s" }} />
-          <div className="h-full w-full bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:28px_28px] opacity-15" />
+          <div className="absolute -left-20 -top-20 h-[28rem] w-[28rem] rounded-full bg-gold-300/30 blur-3xl animate-pulse-glow" />
+          <div className="absolute -right-20 -bottom-20 h-[32rem] w-[32rem] rounded-full bg-emerald-300/30 blur-3xl animate-pulse-glow" style={{ animationDelay: "2.5s" }} />
+          <div className="h-full w-full bg-[radial-gradient(#d4af37_1.5px,transparent_1.5px)] [background-size:28px_28px] opacity-20" />
         </div>
 
         <div className="relative mx-auto max-w-6xl px-4 text-center">
           {/* Top Pill Badge */}
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold-300/50 bg-gold-400/20 px-4 py-1.5 text-xs font-bold text-gold-300 backdrop-blur-md shadow-md">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold-300/60 bg-gold-400/20 px-4.5 py-1.5 text-xs font-bold text-gold-300 backdrop-blur-md shadow-md transition-all duration-300 hover:scale-105">
             <span className="flex h-2 w-2 rounded-full bg-gold-300 animate-ping" />
             <FileSpreadsheet size={14} className="text-gold-300" />
             <span className="tracking-wide">PW GP ANSOR JAWA BARAT</span>
           </div>
 
-          {/* Heading Title */}
+          {/* Solid White Heading Title */}
           <h1 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-white drop-shadow-md">
-            Layanan Persuratan &amp;{" "}
-            <span className="bg-gradient-to-r from-gold-300 via-gold-400 to-amber-200 bg-clip-text text-transparent underline decoration-gold-400/50 decoration-wavy">
-              Dokumen Resmi
-            </span>
+            Layanan Persuratan &amp; Dokumen Resmi
           </h1>
 
           {/* Subtitle Description */}
-          <p className="mx-auto mt-4 max-w-2xl text-base text-ansor-50/90 sm:text-lg leading-relaxed font-medium">
+          <p className="mx-auto mt-4 max-w-2xl text-base text-ansor-50/95 sm:text-lg leading-relaxed font-medium">
             Pusat unduh template dokumen resmi, draft permohonan, serta panduan tata kelola administrasi surat-menyurat di lingkungan PW GP Ansor Jawa Barat.
           </p>
 
           {/* Quick Badges Row */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <span className="flex items-center gap-1.5 rounded-full border border-white/30 bg-white/15 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur-md">
-              <FileText size={14} className="text-gold-300" />
+            <span className="group flex items-center gap-2 rounded-full border border-white/40 bg-white/20 px-4 py-2 text-xs font-bold text-white backdrop-blur-md shadow-sm transition-all duration-300 hover:scale-110 hover:border-gold-300 hover:bg-gold-500/30 hover:text-gold-300 cursor-pointer">
+              <FileText size={15} className="text-gold-300 transition-transform duration-300 group-hover:rotate-12" />
               Template Surat Permohonan
             </span>
-            <span className="flex items-center gap-1.5 rounded-full border border-white/30 bg-white/15 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur-md">
-              <FileCheck size={14} className="text-gold-300" />
+            <span className="group flex items-center gap-2 rounded-full border border-white/40 bg-white/20 px-4 py-2 text-xs font-bold text-white backdrop-blur-md shadow-sm transition-all duration-300 hover:scale-110 hover:border-gold-300 hover:bg-gold-500/30 hover:text-gold-300 cursor-pointer">
+              <FileCheck size={15} className="text-gold-300 transition-transform duration-300 group-hover:rotate-12" />
               Format SK &amp; LPJ
             </span>
-            <span className="flex items-center gap-1.5 rounded-full border border-gold-400/40 bg-gold-500/20 px-4 py-1.5 text-xs font-bold text-gold-300 backdrop-blur-md">
-              <Lock size={13} className="text-gold-400" />
+            <span className="group flex items-center gap-2 rounded-full border border-gold-400/50 bg-gold-500/25 px-4 py-2 text-xs font-bold text-gold-300 backdrop-blur-md shadow-sm transition-all duration-300 hover:scale-110 hover:border-gold-300 hover:bg-gold-500/40 cursor-pointer">
+              <Lock size={14} className="text-gold-300" />
               Pengajuan TTD Online (Coming Soon)
             </span>
           </div>
@@ -120,7 +117,7 @@ export default function PersuratanPage() {
               Silakan unduh file berkas standar untuk kebutuhan administrasi PC, PAC, dan Ranting.
             </p>
           </div>
-          <span className="flex items-center gap-1.5 rounded-lg bg-ansor-100 px-3 py-1 text-xs font-bold text-ansor-800 dark:bg-ansor-900 dark:text-gold-400">
+          <span className="flex items-center gap-1.5 rounded-lg bg-ansor-100 px-3 py-1 text-xs font-bold text-ansor-800 dark:bg-ansor-900 dark:text-gold-400 shadow-sm">
             <Sparkles size={13} className="text-gold-500" />
             4 Berkas Siap Unduh
           </span>
