@@ -30,6 +30,7 @@ export function Footer() {
           <h4 className="mb-3 font-semibold text-white">Tautan</h4>
           <ul className="space-y-2 text-sm text-ansor-200">
             <li><Link href="/profil" className="hover:text-gold-400">Profil</Link></li>
+            <li><Link href="/badan-lembaga" className="hover:text-gold-400">Badan &amp; Lembaga</Link></li>
             <li><Link href="/struktur-organisasi" className="hover:text-gold-400">Struktur Organisasi</Link></li>
             <li><Link href="/berita" className="hover:text-gold-400">Berita</Link></li>
             <li><Link href="/artikel" className="hover:text-gold-400">Artikel</Link></li>

@@ -3,28 +3,34 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
-import { Menu, X, ChevronDown, LogIn } from "lucide-react";
+import { 
+  Menu, X, ChevronDown, LogIn, 
+  Home, User, Landmark, Newspaper, 
+  FileText, Image as ImageIcon, PhoneCall, 
+  Compass, Network, Building2 
+} from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
 // ── Menu Profil (dropdown) ────────────────────────────────────────────────────
 const profilSubmenu = [
-  { href: "/profil",               label: "Profil Organisasi" },
-  { href: "/visi-misi",            label: "Visi & Misi" },
-  { href: "/struktur-organisasi",  label: "Struktur Organisasi" },
+  { href: "/profil",               label: "Profil Organisasi",  icon: Building2 },
+  { href: "/visi-misi",            label: "Visi & Misi",         icon: Compass },
+  { href: "/struktur-organisasi",  label: "Struktur Organisasi", icon: Network },
 ];
 
 // ── Menu utama ────────────────────────────────────────────────────────────────
 const menu = [
-  { href: "/",        label: "Beranda",   dropdown: null },
-  { href: "/profil",  label: "Profil",    dropdown: profilSubmenu },
-  { href: "/berita",  label: "Berita",    dropdown: null },
-  { href: "/artikel", label: "Artikel",   dropdown: null },
-  { href: "/galeri",  label: "Galeri",    dropdown: null },
-  { href: "/kontak",  label: "Kontak",    dropdown: null },
+  { href: "/",               label: "Beranda",        icon: Home,       dropdown: null },
+  { href: "/profil",         label: "Profil",         icon: User,       dropdown: profilSubmenu },
+  { href: "/badan-lembaga",  label: "Badan & Lembaga",icon: Landmark,   dropdown: null },
+  { href: "/berita",         label: "Berita",         icon: Newspaper,  dropdown: null },
+  { href: "/artikel",        label: "Artikel",        icon: FileText,   dropdown: null },
+  { href: "/galeri",         label: "Galeri",         icon: ImageIcon,  dropdown: null },
+  { href: "/kontak",         label: "Kontak",         icon: PhoneCall,  dropdown: null },
 ];
 
 export function Navbar() {
-  const [open, setOpen]         = useState(false);   // mobile menu
+  const [open, setOpen]             = useState(false);   // mobile menu
   const [profilOpen, setProfilOpen] = useState(false); // desktop dropdown
   const [mobileProfilOpen, setMobileProfilOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -42,7 +48,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-ansor-100 bg-white/95 backdrop-blur dark:border-ansor-800 dark:bg-ansor-950/95">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <Image
@@ -65,17 +71,19 @@ export function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-1 lg:flex">
-          {menu.map((item) =>
-            item.dropdown ? (
+          {menu.map((item) => {
+            const Icon = item.icon;
+            return item.dropdown ? (
               // ── Dropdown Profil ──
               <div key={item.href} className="relative" ref={dropdownRef}>
                 <button
                   id="nav-profil-btn"
                   type="button"
                   onClick={() => setProfilOpen((v) => !v)}
-                  className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-ansor-700 transition-colors hover:bg-ansor-50 hover:text-ansor-900 dark:text-ansor-200 dark:hover:bg-ansor-900 dark:hover:text-gold-400"
+                  className="flex items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-ansor-700 transition-colors hover:bg-ansor-50 hover:text-ansor-900 dark:text-ansor-200 dark:hover:bg-ansor-900 dark:hover:text-gold-400"
                 >
-                  {item.label}
+                  <Icon size={16} className="text-ansor-600 dark:text-ansor-400" />
+                  <span>{item.label}</span>
                   <ChevronDown
                     size={14}
                     className={`transition-transform duration-200 ${profilOpen ? "rotate-180" : ""}`}
@@ -85,18 +93,22 @@ export function Navbar() {
                 {profilOpen && (
                   <div
                     id="nav-profil-dropdown"
-                    className="absolute left-0 top-full mt-1 min-w-[200px] rounded-xl border border-ansor-100 bg-white py-1 shadow-xl dark:border-ansor-800 dark:bg-ansor-900"
+                    className="absolute left-0 top-full mt-1 min-w-[210px] rounded-xl border border-ansor-100 bg-white py-1.5 shadow-xl dark:border-ansor-800 dark:bg-ansor-900"
                   >
-                    {item.dropdown.map((sub) => (
-                      <Link
-                        key={sub.href}
-                        href={sub.href}
-                        onClick={() => setProfilOpen(false)}
-                        className="block px-4 py-2.5 text-sm font-medium text-ansor-700 transition-colors hover:bg-ansor-50 hover:text-ansor-900 dark:text-ansor-200 dark:hover:bg-ansor-800 dark:hover:text-gold-400"
-                      >
-                        {sub.label}
-                      </Link>
-                    ))}
+                    {item.dropdown.map((sub) => {
+                      const SubIcon = sub.icon;
+                      return (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          onClick={() => setProfilOpen(false)}
+                          className="flex items-center gap-2.5 px-4 py-2.5 text-sm font-medium text-ansor-700 transition-colors hover:bg-ansor-50 hover:text-ansor-900 dark:text-ansor-200 dark:hover:bg-ansor-800 dark:hover:text-gold-400"
+                        >
+                          <SubIcon size={15} className="text-ansor-500 dark:text-ansor-400" />
+                          <span>{sub.label}</span>
+                        </Link>
+                      );
+                    })}
                   </div>
                 )}
               </div>
@@ -105,12 +117,13 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-md px-3 py-2 text-sm font-medium text-ansor-700 transition-colors hover:bg-ansor-50 hover:text-ansor-900 dark:text-ansor-200 dark:hover:bg-ansor-900 dark:hover:text-gold-400"
+                className="flex items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-ansor-700 transition-colors hover:bg-ansor-50 hover:text-ansor-900 dark:text-ansor-200 dark:hover:bg-ansor-900 dark:hover:text-gold-400"
               >
-                {item.label}
+                <Icon size={16} className="text-ansor-600 dark:text-ansor-400" />
+                <span>{item.label}</span>
               </Link>
-            )
-          )}
+            );
+          })}
         </nav>
 
         {/* Right side actions */}
@@ -142,47 +155,58 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <nav className="border-t border-ansor-100 bg-white px-4 py-2 dark:border-ansor-800 dark:bg-ansor-950 lg:hidden">
-          {menu.map((item) =>
-            item.dropdown ? (
-              <div key={item.href}>
-                <button
-                  type="button"
-                  onClick={() => setMobileProfilOpen((v) => !v)}
-                  className="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-ansor-700 hover:bg-ansor-50 dark:text-ansor-200 dark:hover:bg-ansor-900"
+        <nav className="border-t border-ansor-100 bg-white px-4 py-3 dark:border-ansor-800 dark:bg-ansor-950 lg:hidden">
+          <div className="space-y-1">
+            {menu.map((item) => {
+              const Icon = item.icon;
+              return item.dropdown ? (
+                <div key={item.href}>
+                  <button
+                    type="button"
+                    onClick={() => setMobileProfilOpen((v) => !v)}
+                    className="flex w-full items-center justify-between rounded-md px-3 py-2.5 text-sm font-medium text-ansor-700 hover:bg-ansor-50 dark:text-ansor-200 dark:hover:bg-ansor-900"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Icon size={18} className="text-ansor-600 dark:text-ansor-400" />
+                      {item.label}
+                    </span>
+                    <ChevronDown
+                      size={14}
+                      className={`transition-transform duration-200 ${mobileProfilOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  {mobileProfilOpen && (
+                    <div className="ml-4 space-y-1 border-l-2 border-ansor-200 pl-3 dark:border-ansor-700">
+                      {item.dropdown.map((sub) => {
+                        const SubIcon = sub.icon;
+                        return (
+                          <Link
+                            key={sub.href}
+                            href={sub.href}
+                            onClick={() => { setOpen(false); setMobileProfilOpen(false); }}
+                            className="flex items-center gap-2.5 rounded-md px-3 py-2 text-sm text-ansor-600 hover:bg-ansor-50 dark:text-ansor-300 dark:hover:bg-ansor-900"
+                          >
+                            <SubIcon size={16} className="text-ansor-500 dark:text-ansor-400" />
+                            <span>{sub.label}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-2 rounded-md px-3 py-2.5 text-sm font-medium text-ansor-700 hover:bg-ansor-50 dark:text-ansor-200 dark:hover:bg-ansor-900"
                 >
-                  {item.label}
-                  <ChevronDown
-                    size={14}
-                    className={`transition-transform duration-200 ${mobileProfilOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-                {mobileProfilOpen && (
-                  <div className="ml-3 space-y-0.5 border-l border-ansor-100 pl-3 dark:border-ansor-800">
-                    {item.dropdown.map((sub) => (
-                      <Link
-                        key={sub.href}
-                        href={sub.href}
-                        onClick={() => { setOpen(false); setMobileProfilOpen(false); }}
-                        className="block rounded-md px-3 py-2 text-sm text-ansor-600 hover:bg-ansor-50 dark:text-ansor-300 dark:hover:bg-ansor-900"
-                      >
-                        {sub.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ) : (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="block rounded-md px-3 py-2 text-sm font-medium text-ansor-700 hover:bg-ansor-50 dark:text-ansor-200 dark:hover:bg-ansor-900"
-              >
-                {item.label}
-              </Link>
-            )
-          )}
+                  <Icon size={18} className="text-ansor-600 dark:text-ansor-400" />
+                  <span>{item.label}</span>
+                </Link>
+              );
+            })}
+          </div>
         </nav>
       )}
 
@@ -190,3 +214,4 @@ export function Navbar() {
     </header>
   );
 }
+
