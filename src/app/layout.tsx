@@ -7,9 +7,9 @@ export const metadata: Metadata = {
   description:
     "Media informasi resmi Pimpinan Wilayah Gerakan Pemuda Ansor Provinsi Jawa Barat.",
   icons: {
-    icon: "/GP Ansor.svg",
-    shortcut: "/GP Ansor.svg",
-    apple: "/GP Ansor.svg",
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
 };
 
