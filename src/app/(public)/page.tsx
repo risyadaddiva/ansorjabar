@@ -1,4 +1,6 @@
 import { Hero } from "@/components/Hero";
+import { SambutanKetua } from "@/components/SambutanKetua";
+import { PetaWilayahKader } from "@/components/PetaWilayahKader";
 import { NewsCard } from "@/components/NewsCard";
 import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
@@ -26,13 +28,23 @@ export default async function HomePage() {
 
   return (
     <div>
+      {/* ── 1. Hero Section ─────────────────────────────────────────────────── */}
       <Hero />
 
+      {/* ── 2. Sambutan Ketua PW GP Ansor Jawa Barat ────────────────────────── */}
+      <SambutanKetua />
+
+      {/* ── 3. Berita Terbaru Section ───────────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-4 py-14">
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-ansor-800 dark:text-ansor-50">
-            Berita Terbaru
-          </h2>
+          <div>
+            <h2 className="text-2xl font-bold text-ansor-800 dark:text-ansor-50">
+              Berita Terbaru
+            </h2>
+            <p className="text-xs text-ansor-600 dark:text-ansor-400">
+              Kabar kegiatan dan warta resmi dari PW GP Ansor Jawa Barat.
+            </p>
+          </div>
           <Link href="/berita" className="text-sm font-semibold text-ansor-600 hover:underline dark:text-gold-400">
             Lihat semua →
           </Link>
@@ -59,12 +71,21 @@ export default async function HomePage() {
         )}
       </section>
 
+      {/* ── 4. Peta Wilayah & Kekuatan Kader ────────────────────────────────── */}
+      <PetaWilayahKader />
+
+      {/* ── 5. Artikel & Opini Section ──────────────────────────────────────── */}
       <section className="bg-ansor-50 py-14 dark:bg-ansor-900/40">
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-6 flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-ansor-800 dark:text-ansor-50">
-              Artikel &amp; Opini
-            </h2>
+            <div>
+              <h2 className="text-2xl font-bold text-ansor-800 dark:text-ansor-50">
+                Artikel &amp; Opini
+              </h2>
+              <p className="text-xs text-ansor-600 dark:text-ansor-400">
+                Gagasan, pemikiran, dan tulisan kader Ansor Jawa Barat.
+              </p>
+            </div>
             <Link href="/artikel" className="text-sm font-semibold text-ansor-600 hover:underline dark:text-gold-400">
               Lihat semua →
             </Link>
