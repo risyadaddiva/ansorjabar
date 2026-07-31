@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Landmark, Shield, BookOpen, Anchor, Activity, Compass, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Landmark, Shield, BookOpen, Anchor, Activity, Compass, ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -107,21 +107,51 @@ const daftarLembaga: LembagaItem[] = [
 export default function BadanLembagaPage() {
   return (
     <div className="bg-ansor-50/50 pb-20 dark:bg-ansor-950/50">
-      {/* ── Banner Header ──────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-ansor-900 via-ansor-800 to-ansor-950 py-16 text-white shadow-lg">
-        {/* Hiasan background */}
-        <div className="absolute inset-0 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:24px_24px] opacity-10" />
+      {/* ── Dynamic & Animated Banner Header ───────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-ansor-600 via-ansor-700 to-ansor-800 py-16 lg:py-20 text-white shadow-xl">
+        {/* Background Orbs Glow & Islamic Texture */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -left-20 -top-20 h-96 w-96 rounded-full bg-gold-300/25 blur-3xl animate-pulse-glow" />
+          <div className="absolute -right-20 -bottom-20 h-[30rem] w-[30rem] rounded-full bg-emerald-300/25 blur-3xl animate-pulse-glow" style={{ animationDelay: "2.5s" }} />
+          <div className="h-full w-full bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:28px_28px] opacity-15" />
+        </div>
+
         <div className="relative mx-auto max-w-6xl px-4 text-center">
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-gold-500/10 px-4 py-1.5 text-xs font-semibold text-gold-300 backdrop-blur-sm">
-            <Landmark size={14} className="text-gold-400" />
-            <span>PW GP ANSOR JAWA BARAT</span>
+          {/* Top Pill Badge */}
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold-300/50 bg-gold-400/20 px-4 py-1.5 text-xs font-bold text-gold-300 backdrop-blur-md shadow-md">
+            <span className="flex h-2 w-2 rounded-full bg-gold-300 animate-ping" />
+            <Landmark size={14} className="text-gold-300" />
+            <span className="tracking-wide">PW GP ANSOR JAWA BARAT</span>
           </div>
-          <h1 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-white">
-            Badan &amp; Lembaga Otonom
+
+          {/* Heading Title */}
+          <h1 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-white drop-shadow-md">
+            Badan &amp; Lembaga{" "}
+            <span className="bg-gradient-to-r from-gold-300 via-gold-400 to-amber-200 bg-clip-text text-transparent underline decoration-gold-400/50 decoration-wavy">
+              Otonom
+            </span>
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-ansor-200 sm:text-lg">
+
+          {/* Subtitle Description */}
+          <p className="mx-auto mt-4 max-w-2xl text-base text-ansor-50/90 sm:text-lg leading-relaxed font-medium">
             Sayap organisasi dan satuan khusus Gerakan Pemuda Ansor Jawa Barat yang bergerak di bidang keagamaan, pengamanan, kemaritiman, pencegahan narkoba, dan ketertiban lalu lintas.
           </p>
+
+          {/* Quick Badges Row (5 Badges) */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
+            {daftarLembaga.map((l) => {
+              const Icon = l.icon;
+              return (
+                <div
+                  key={l.id}
+                  className="flex items-center gap-1.5 rounded-full border border-white/30 bg-white/15 px-3.5 py-1.5 text-xs font-semibold text-white backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-gold-300 hover:bg-gold-500/25 hover:text-gold-300"
+                >
+                  <Icon size={14} className="text-gold-300" />
+                  <span>{l.namaShort}</span>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -136,19 +166,21 @@ export default function BadanLembagaPage() {
               Masing-masing memiliki tugas khusus untuk khidmat kepada masyarakat dan organisasi.
             </p>
           </div>
-          <span className="rounded-lg bg-ansor-100 px-3 py-1 text-xs font-bold text-ansor-800 dark:bg-ansor-900 dark:text-gold-400">
-            5 Lembaga Active
+          <span className="flex items-center gap-1.5 rounded-lg bg-ansor-100 px-3 py-1 text-xs font-bold text-ansor-800 dark:bg-ansor-900 dark:text-gold-400">
+            <Sparkles size={13} className="text-gold-500" />
+            5 Lembaga Aktif
           </span>
         </div>
 
         {/* Card Grid */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {daftarLembaga.map((item) => {
+          {daftarLembaga.map((item, idx) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.id}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-ansor-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl dark:border-ansor-800 dark:bg-ansor-900"
+                className="group flex flex-col overflow-hidden rounded-2xl border border-ansor-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border-ansor-800 dark:bg-ansor-900"
+                style={{ animationDelay: `${idx * 0.15}s` }}
               >
                 {/* Header Foto Card */}
                 <div className="relative h-48 w-full overflow-hidden bg-ansor-950">
@@ -162,7 +194,7 @@ export default function BadanLembagaPage() {
                   
                   {/* Badge Nama Short */}
                   <div className="absolute bottom-3 left-4 flex items-center gap-2">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-ansor-800 text-gold-400 shadow-md ring-2 ring-gold-400/30">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-ansor-800 text-gold-400 shadow-md ring-2 ring-gold-400/40 transition-transform group-hover:scale-110">
                       <Icon size={20} />
                     </span>
                     <div>
@@ -182,7 +214,7 @@ export default function BadanLembagaPage() {
                     </span>
                   </div>
 
-                  <h4 className="mb-2 text-base font-bold text-ansor-900 dark:text-ansor-100">
+                  <h4 className="mb-2 text-base font-bold text-ansor-900 dark:text-ansor-100 group-hover:text-ansor-700 dark:group-hover:text-gold-400 transition-colors">
                     {item.namaLengkap}
                   </h4>
 
@@ -196,8 +228,8 @@ export default function BadanLembagaPage() {
                       Fokus &amp; Peran Utama:
                     </p>
                     <ul className="space-y-1.5">
-                      {item.tugasUtama.map((tugas, idx) => (
-                        <li key={idx} className="flex items-start gap-1.5 text-xs text-ansor-700 dark:text-ansor-300">
+                      {item.tugasUtama.map((tugas, i) => (
+                        <li key={i} className="flex items-start gap-1.5 text-xs text-ansor-700 dark:text-ansor-300">
                           <CheckCircle2 size={13} className="mt-0.5 shrink-0 text-ansor-600 dark:text-gold-400" />
                           <span>{tugas}</span>
                         </li>
@@ -213,19 +245,20 @@ export default function BadanLembagaPage() {
 
       {/* ── Callout Bottom ────────────────────────────────────────────────────── */}
       <section className="mx-auto mt-16 max-w-6xl px-4">
-        <div className="relative overflow-hidden rounded-2xl border border-ansor-200 bg-gradient-to-r from-ansor-800 to-ansor-900 p-8 text-white shadow-xl dark:border-ansor-700">
+        <div className="relative overflow-hidden rounded-2xl border border-ansor-200 bg-gradient-to-r from-ansor-700 via-ansor-800 to-ansor-700 p-8 text-white shadow-xl dark:border-ansor-700">
+          <div className="absolute -right-10 -bottom-10 h-40 w-40 rounded-full bg-gold-400/20 blur-2xl pointer-events-none" />
           <div className="relative z-10 flex flex-col items-center justify-between gap-6 md:flex-row">
             <div>
               <h3 className="text-xl font-bold text-white sm:text-2xl">
                 Tertarik Bergabung atau Mengadakan Kegiatan Bersama?
               </h3>
-              <p className="mt-1 text-xs text-ansor-200 sm:text-sm">
+              <p className="mt-1 text-xs text-ansor-100 sm:text-sm">
                 Hubungi Pengurus Wilayah GP Ansor Jawa Barat untuk informasi pendaftaran dan sinergi kegiatan.
               </p>
             </div>
             <Link
               href="/kontak"
-              className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-gold-400 px-5 py-3 text-sm font-bold text-ansor-950 transition-all hover:bg-gold-300 hover:shadow-lg"
+              className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-gold-400 px-5 py-3 text-sm font-bold text-ansor-950 transition-all hover:bg-gold-300 hover:shadow-lg hover:scale-105"
             >
               <span>Hubungi Kami</span>
               <ArrowRight size={16} />
