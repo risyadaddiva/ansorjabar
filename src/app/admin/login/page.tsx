@@ -25,7 +25,7 @@ export default function AdminLoginPage() {
     setLoading(false);
 
     if (error) {
-      setError("Email atau kata sandi salah. Silakan coba lagi.");
+      setError(error.message || "Email atau kata sandi salah. Silakan coba lagi.");
       return;
     }
 
